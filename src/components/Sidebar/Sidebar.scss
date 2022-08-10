@@ -1,0 +1,38 @@
+// sidebar only styles go here...
+
+.sidebar {
+	background-color: var(--surface-200);
+	padding: 2rem;
+	user-select: none;
+
+	&__list {
+		display: flex;
+		gap: 1rem;
+		list-style: none;
+		flex-direction: column;
+		margin-top: 2rem;
+	}
+
+	&__item {
+		display: flex;
+		height: 3rem;
+		gap: 0.5rem;
+		align-items: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		cursor: pointer;
+		background-color: var(--surface-200);
+		border-radius: 6px;
+		padding: 0 6px;
+		transition: all 0.15s ease-in-out;
+		transition-property: background-color, color;
+
+		&:hover {
+			background-color: var(--surface-300);
+		}
+	}
+
+	.active {
+		color: hsl(var(--h) 90% var(--l));
+	}
+}
