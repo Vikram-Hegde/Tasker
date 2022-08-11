@@ -1,0 +1,16 @@
+%uppercase {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+%align-center {
+	display: flex;
+	align-items: center;
+	line-height: 0;
+}
+
+%centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

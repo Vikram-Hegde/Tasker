@@ -1,4 +1,5 @@
 @use './theme' as *;
+@use './page' as *;
 
 *,
 *::before,
@@ -6,7 +7,10 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	transition: all 0.15s ease-in-out;
+	transition-property: color, background-color;
 }
+
 
 body {
 	color: var(--text-200);
@@ -16,6 +20,7 @@ body {
 }
 
 .App {
+	--sidebar-span: 3;
 	min-height: 100vh;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -23,6 +28,11 @@ body {
 
 .sidebar {
 	grid-row: 1 / -1;
-	grid-column: span 3;
+	grid-column: span var(--sidebar-span);
 	max-width: 20rem;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
 }

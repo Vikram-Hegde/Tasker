@@ -1,0 +1,26 @@
+@use './globals' as *;
+
+.pages {
+	grid-row: 1 / -1;
+	grid-column: calc(var(--sidebar-span) + 1) / -1;
+  padding: 2rem;
+}
+
+.page {
+	animation: slideIn 250ms ease-in-out forwards;
+
+	&__subtitle {
+		@extend %uppercase;
+	}
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

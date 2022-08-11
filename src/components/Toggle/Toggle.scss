@@ -1,0 +1,33 @@
+@use '../../styles/globals' as *;
+
+#theme-toggle {
+	position: absolute;
+	left: -999px;
+}
+
+.toggler {
+	height: calc(32px / 1.25);
+	width: calc(64px / 1.25);
+	display: inline-flex;
+	@extend %align-center;
+	border-radius: 500px;
+	background-color: var(--surface-200);
+	padding: 0 4px;
+}
+
+.toggle__circle {
+	height: 18px;
+	width: 18px;
+	border-radius: 22px;
+	background-color: var(--surface-100);
+	transition-property: transform, color, background-color;
+	@extend %centered;
+
+	.sun-icon {
+		margin-bottom: 1px;
+	}
+}
+
+#theme-toggle:checked ~ .toggle__circle {
+	transform: translateX(24px);
+}
