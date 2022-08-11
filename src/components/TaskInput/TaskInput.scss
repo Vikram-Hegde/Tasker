@@ -1,0 +1,52 @@
+@use '../../styles/globals';
+
+.task-input {
+	width: min(60%, 100%);
+	height: 2.5rem;
+	position: relative;
+	margin-top: 2rem;
+
+	&__input {
+		width: 100%;
+		height: inherit;
+		appearance: none;
+		border: 1px solid var(--surface-300);
+		background-color: var(--surface-200);
+		border-radius: 4px;
+		font: inherit;
+		color: var(--text-200);
+		padding: 0 1rem;
+		outline-color: var(--surface-400);
+		outline-offset: 0px;
+
+		&:focus-visible {
+			outline: 1px solid var(--surface-400);
+			outline-offset: 3px;
+		}
+	}
+
+	&__btn {
+		position: absolute;
+		inset: 4px 4px 4px auto;
+		background-color: var(--surface-300);
+		color: inherit;
+		min-width: 2.5rem;
+		@extend %uppercase;
+		appearance: none;
+		border-radius: 4px;
+		border: none;
+		@extend %align-center;
+		gap: 0.25rem;
+		padding: 0 0.5rem;
+		transition-property: transform, outline, background-color, color;
+		outline-color: var(--surface-400);
+
+		&:focus-visible {
+			outline: 2px solid var(--surface-400);
+		}
+
+		&:active {
+			transform: scale(0.96);
+		}
+	}
+}

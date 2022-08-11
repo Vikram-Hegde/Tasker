@@ -9,6 +9,7 @@ import Completed from './pages/Completed';
 import Toggle from './components/Toggle/Toggle';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import TaskInput from './components/TaskInput/TaskInput';
 
 function App() {
 	let menuList = [
@@ -40,6 +41,8 @@ function App() {
 					<div className="page__subtitle">Hello User,</div>
 					<Toggle setTheme={setTheme} />
 				</header>
+				<div className="page__title">You've got <b>8</b> tasks to complete</div>
+				<TaskInput />
 				{active.page}
 			</div>
 		</main>

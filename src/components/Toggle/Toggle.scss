@@ -13,6 +13,12 @@
 	border-radius: 500px;
 	background-color: var(--surface-200);
 	padding: 0 4px;
+	outline: 1px solid var(--surface-300);
+	outline-offset: 1px;
+
+	&:hover {
+		outline: 2px solid var(--surface-400);
+	}
 }
 
 .toggle__circle {

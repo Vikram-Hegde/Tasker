@@ -17,9 +17,9 @@ export default function Toggle({ setTheme }) {
 				<input type="checkbox" id="theme-toggle" onChange={handleChange} />
 				<div className="toggle__circle">
 					{toggle ? (
-						<SunIcon width={12} height={12} />
-					) : (
 						<MoonIcon width={12} height={12} />
+					) : (
+						<SunIcon width={12} height={12} />
 					)}
 				</div>
 			</label>
