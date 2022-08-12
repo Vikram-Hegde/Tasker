@@ -1,7 +1,25 @@
 import Logo from '../icons/Logo';
+import HomeIcon from '../icons/HomeIcon';
+import ImportantIcon from '../icons/ImportantIcon';
+import CompletedIcon from '../icons/CompletedIcon';
 import './Sidebar.scss';
 
-export default function Sidebar({ menuList, active, setActive }) {
+export default function Sidebar({ activeMenu, setActiveMenu }) {
+	let menuList = [
+		{
+			name: 'Home',
+			icon: <HomeIcon height={24} width={24} />,
+		},
+		{
+			name: 'Important',
+			icon: <ImportantIcon height={24} width={24} />,
+		},
+		{
+			name: 'Completed',
+			icon: <CompletedIcon height={24} width={24} />,
+		},
+	];
+
 	return (
 		<div className="sidebar">
 			<div className="logo sidebar__logo">
@@ -12,9 +30,9 @@ export default function Sidebar({ menuList, active, setActive }) {
 					{menuList.map((item) => (
 						<li
 							className={`sidebar__item ${
-								active.name === item.name ? 'active' : ''
+								activeMenu.name === item.name ? 'active' : ''
 							}`}
-							onClick={() => setActive(item)}
+							onClick={() => setActiveMenu(item)}
 							key={item.name}
 						>
 							{item.icon}

@@ -14,21 +14,21 @@ $colors: (
 			500: hsl(var(--h) 70% 86%),
 		),
 		border: (
-			100: hsl(var(--h) 14% 83%)
+			100: hsl(var(--h) 14% 83%),
 		),
 		others: (
 			'yellow': hsl(36 99% 63%),
-			'red': hsl(12 100% 59%)
-		)
+			'red': hsl(12 100% 59%),
+		),
 	),
 	dark: (
 		text: (
 			100: hsl(var(--h) 14% 90%),
 			200: hsl(var(--h) 14% 83%),
-			300: hsl(var(--h) 85% 80%)
+			300: hsl(var(--h) 85% 80%),
 		),
 		border: (
-			100: hsl(207 43% 21%)
+			100: hsl(207 43% 21%),
 		),
 		surface: (
 			100: hsl(207 43% 9%),
@@ -39,8 +39,8 @@ $colors: (
 		),
 		others: (
 			'yellow': hsl(36 99% 70%),
-			'red': hsl(12 100% 66%)
-		)
+			'red': hsl(12 100% 66%),
+		),
 	),
 );
 
@@ -57,7 +57,7 @@ $colors: (
 	--h: 229;
 	--s: 60%;
 	--l: 64%;
-	@include color-scheme(light)
+	@include color-scheme(light);
 }
 
 [color-scheme='dark'] {

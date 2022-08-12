@@ -2,9 +2,7 @@ import './styles/style.scss';
 import Sidebar from './components/Sidebar/Sidebar';
 import HomeIcon from './components/icons/HomeIcon';
 import Home from './pages/Home';
-import ImportantIcon from './components/icons/ImportantIcon';
 import Important from './pages/Important';
-import CompletedIcon from './components/icons/CompletedIcon';
 import Completed from './pages/Completed';
 import Toggle from './components/Toggle/Toggle';
 import { useState } from 'react';
@@ -21,6 +19,10 @@ function App() {
 			important: false,
 		},
 	]);
+
+	const completedTasks = tasks.filter((task) => task.completed);
+	const importantTasks = tasks.filter((task) => task.important);
+	const remainingTasks = tasks.length - completedTasks.length;
 
 	const toggleOption = (id, option) => {
 		const task = tasks.find((taskId) => taskId.id === id);
@@ -42,33 +44,24 @@ function App() {
 
 	const [theme, setTheme] = useState('dark');
 
-	let menuList = [
-		{
-			name: 'Home',
-			icon: <HomeIcon height={24} width={24} />,
-		},
-		{
-			name: 'Important',
-			icon: <ImportantIcon height={24} width={24} />,
-		},
-		{
-			name: 'Completed',
-			icon: <CompletedIcon height={24} width={24} />,
-		},
-	];
+	const [activeMenu, setActiveMenu] = useState({
+		name: 'Home',
+		icon: <HomeIcon width={24} height={24} />,
+	});
 
-	const [active, setActive] = useState(menuList[0]);
 	let pageProps = {
-		tasks: tasks,
 		toggleOption: toggleOption,
 		handleDelete: handleDelete,
 		updateTask: updateTask,
 	};
 	let content;
 
-	if (active.name === 'Home') content = <Home {...pageProps} />;
-	else if (active.name === 'Important') content = <Important {...pageProps} />;
-	else if (active.name === 'Completed') content = <Completed {...pageProps} />;
+	if (activeMenu.name === 'Home')
+		content = <Home {...pageProps} tasks={tasks} />;
+	else if (activeMenu.name === 'Important')
+		content = <Important {...pageProps} tasks={importantTasks} />;
+	else if (activeMenu.name === 'Completed')
+		content = <Completed {...pageProps} tasks={completedTasks} />;
 
 	useEffect(() => {
 		document.body.setAttribute('color-scheme', theme);
@@ -76,14 +69,15 @@ function App() {
 
 	return (
 		<main className="App">
-			<Sidebar menuList={menuList} active={active} setActive={setActive} />
+			<Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
 			<div className="pages">
 				<header>
 					<div className="page__subtitle">Hello User,</div>
 					<Toggle setTheme={setTheme} />
 				</header>
 				<div className="page__title">
-					You've got <b>{tasks.length}</b> tasks to complete
+					You've got <b>{remainingTasks}</b>{' '}
+					{remainingTasks > 1 ? 'tasks' : 'task'} to complete
 				</div>
 				<TaskInput addNewTask={addNewTask} />
 				{content}

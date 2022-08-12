@@ -19,6 +19,11 @@
 		outline-color: var(--surface-400);
 		outline-offset: 0px;
 
+		&::placeholder {
+			color: var(--text-300);
+			opacity: 0.6;
+		}
+
 		&:focus-visible {
 			outline: 1px solid var(--surface-400);
 			outline-offset: 3px;

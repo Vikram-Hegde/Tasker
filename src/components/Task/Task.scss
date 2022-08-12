@@ -11,6 +11,10 @@
 	position: relative;
 	animation: slideIn 0.2s ease-in-out forwards;
 
+	&__name.dashed {
+		text-decoration: line-through;
+	}
+
 	&__icon {
 		background-color: transparent;
 		border: none;

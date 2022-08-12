@@ -36,17 +36,16 @@ export default function Task({
 	};
 
 	return (
-		<div
-			className="task"
-			onDoubleClick={() => setToggle(true)}
-		>
+		<div className="task" onDoubleClick={() => setToggle(true)}>
 			<button
 				onClick={() => toggleOption(task.id, 'completed')}
 				className={`task__check ${task.completed ? 'completed' : ''}`}
 			>
 				{task.completed && <Check width={20} height={20} />}
 			</button>
-			<div className="task__name">{task.task}</div>
+			<div className={`task__name ${task.completed ? 'dashed' : ''}`}>
+				{task.task}
+			</div>
 			{toggle && (
 				<input
 					value={updatedTask}

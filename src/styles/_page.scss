@@ -4,6 +4,7 @@
 	grid-row: 1 / -1;
 	grid-column: calc(var(--sidebar-span) + 1) / -1;
 	padding: clamp(1.5rem, 3vw, 2rem);
+	overflow-y: auto;
 }
 
 .page {
@@ -12,7 +13,7 @@
 
 	&__title {
 		margin-top: 0.5rem;
-		font-size: clamp(1.25rem, 3vw + 1rem, 1.75rem)
+		font-size: clamp(1.25rem, 3vw + 1rem, 1.75rem);
 	}
 
 	&__subtitle {
