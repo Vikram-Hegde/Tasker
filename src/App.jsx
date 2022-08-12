@@ -32,6 +32,14 @@ function App() {
 		setTasks(tasks.filter((task) => task.id !== id));
 	};
 
+	const updateTask = (id, task) => {
+		const taskToUpdate = tasks.find((taskId) => taskId.id === id);
+		taskToUpdate.task = task;
+		setTasks([...tasks]);
+	};
+
+	const addNewTask = (task) => setTasks([...tasks, task]);
+
 	const [theme, setTheme] = useState('dark');
 
 	let menuList = [
@@ -54,6 +62,7 @@ function App() {
 		tasks: tasks,
 		toggleOption: toggleOption,
 		handleDelete: handleDelete,
+		updateTask: updateTask,
 	};
 	let content;
 
@@ -76,7 +85,7 @@ function App() {
 				<div className="page__title">
 					You've got <b>{tasks.length}</b> tasks to complete
 				</div>
-				<TaskInput />
+				<TaskInput addNewTask={addNewTask} />
 				{content}
 			</div>
 		</main>
