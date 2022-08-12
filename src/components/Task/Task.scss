@@ -1,0 +1,86 @@
+@use '../../styles/globals';
+
+.task {
+	--size: 2.5rem;
+	--brr: 0.25rem;
+	width: min(720px, 100%);
+	@extend %align-center;
+	background-color: var(--surface-200);
+	height: var(--size);
+	border-radius: var(--brr);
+
+	&__icon {
+		background-color: transparent;
+		border: none;
+		min-width: var(--size);
+		height: 100%;
+		@extend %centered;
+
+		&:hover {
+			background-color: var(--surface-300);
+		}
+	}
+
+	.important-icon {
+		margin-left: auto;
+
+		svg {
+			transition: all 0.25s ease-in-out;
+			transition-property: fill, stroke;
+		}
+
+		&.important {
+			svg {
+				stroke: none;
+				fill: var(--others-yellow);
+			}
+		}
+	}
+
+	.delete-icon {
+		border-radius: 0 var(--brr) var(--brr) 0;
+	}
+
+	& + & {
+		margin-top: 1rem;
+	}
+
+	button {
+		@extend %align-center;
+		appearance: none;
+		cursor: pointer;
+	}
+
+	&__check {
+		--size: 1.25rem;
+		margin: 0 0.75rem;
+		height: var(--size);
+		width: var(--size);
+		border-radius: var(--size);
+		border: 2px solid var(--surface-400);
+		background-color: transparent;
+		@extend %centered;
+
+		svg {
+			margin-top: 1px;
+
+			path {
+				stroke-dasharray: 18;
+				stroke-dashoffset: 18;
+				animation: drawTick 0.25s cubic-bezier(0.215, 0.61, 0.355, 1) forwards
+					0.15s;
+			}
+		}
+
+		&.completed {
+			background-color: hsl(var(--h) var(--s) var(--l));
+			border: none;
+		}
+	}
+}
+
+@keyframes drawTick {
+	to {
+		stroke-dashoffset: 0;
+	}
+}

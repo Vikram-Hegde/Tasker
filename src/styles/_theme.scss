@@ -11,6 +11,7 @@ $colors: (
 			200: hsl(var(--h) var(--s) 96%),
 			300: hsl(var(--h) 70% 93%),
 			400: hsl(var(--h) 70% 90%),
+			500: hsl(var(--h) 70% 86%),
 		),
 		border: (
 			100: hsl(var(--h) 14% 83%)
@@ -34,6 +35,7 @@ $colors: (
 			200: hsl(207 43% 14%),
 			300: hsl(207 43% 17%),
 			400: hsl(207 43% 20%),
+			500: hsl(207 43% 25%),
 		),
 		others: (
 			'yellow': hsl(36 99% 70%),
@@ -53,7 +55,7 @@ $colors: (
 
 :root {
 	--h: 229;
-	--s: 100%;
+	--s: 75%;
 	--l: 64%;
 	@include color-scheme(light)
 }

@@ -12,22 +12,54 @@ import { useEffect } from 'react';
 import TaskInput from './components/TaskInput/TaskInput';
 
 function App() {
+	const [tasks, setTasks] = useState([
+		{ id: 1, task: 'Finish this project', completed: true, important: true },
+		{
+			id: 2,
+			task: 'Bank work should be done by today',
+			completed: false,
+			important: false,
+		},
+	]);
+
+	const toggleOption = (id, option) => {
+		const task = tasks.find((taskId) => taskId.id === id);
+		task[option] = !task[option];
+		setTasks([...tasks]);
+	};
+
+	const handleDelete = (id) => {
+		setTasks(tasks.filter((task) => task.id !== id));
+	};
+
+	const [theme, setTheme] = useState('dark');
+
 	let menuList = [
-		{ name: 'Home', icon: <HomeIcon height={24} width={24} />, page: <Home /> },
+		{
+			name: 'Home',
+			icon: <HomeIcon height={24} width={24} />,
+		},
 		{
 			name: 'Important',
 			icon: <ImportantIcon height={24} width={24} />,
-			page: <Important />,
 		},
 		{
 			name: 'Completed',
 			icon: <CompletedIcon height={24} width={24} />,
-			page: <Completed />,
 		},
 	];
 
-	let [active, setActive] = useState(menuList[0]);
-	let [theme, setTheme] = useState('light');
+	const [active, setActive] = useState(menuList[0]);
+	let pageProps = {
+		tasks: tasks,
+		toggleOption: toggleOption,
+		handleDelete: handleDelete,
+	};
+	let content;
+
+	if (active.name === 'Home') content = <Home {...pageProps} />;
+	else if (active.name === 'Important') content = <Important {...pageProps} />;
+	else if (active.name === 'Completed') content = <Completed {...pageProps} />;
 
 	useEffect(() => {
 		document.body.setAttribute('color-scheme', theme);
@@ -41,9 +73,11 @@ function App() {
 					<div className="page__subtitle">Hello User,</div>
 					<Toggle setTheme={setTheme} />
 				</header>
-				<div className="page__title">You've got <b>8</b> tasks to complete</div>
+				<div className="page__title">
+					You've got <b>{tasks.length}</b> tasks to complete
+				</div>
 				<TaskInput />
-				{active.page}
+				{content}
 			</div>
 		</main>
 	);

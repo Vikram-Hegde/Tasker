@@ -4,7 +4,7 @@ import SunIcon from '../icons/SunIcon';
 import './Toggle.scss';
 
 export default function Toggle({ setTheme }) {
-	let [toggle, setToggle] = useState(0);
+	let [toggle, setToggle] = useState(1);
 
 	const handleChange = () => {
 		setToggle(!toggle);
