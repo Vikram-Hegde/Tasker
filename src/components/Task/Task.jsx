@@ -6,7 +6,6 @@ import Trash from '../icons/Trash';
 import './Task.scss';
 
 export default function Task({
-	idx,
 	task,
 	toggleOption,
 	handleDelete,

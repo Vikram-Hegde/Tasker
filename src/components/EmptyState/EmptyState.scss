@@ -1,0 +1,15 @@
+@use '../../styles/globals';
+
+.empty-state {
+	height: 60vh;
+	@extend %centered;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.content {
+	@extend %uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+	font-size: small;
+}

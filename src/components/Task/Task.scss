@@ -11,8 +11,28 @@
 	position: relative;
 	animation: slideIn 0.2s ease-in-out forwards;
 
+	&__name {
+		position: relative;
+	}
+
+	&__name::before {
+		display: block;
+		margin-top: 1px;
+		content: '';
+		height: 1px;
+		background-color: var(--text-200);
+		width: 100%;
+		position: absolute;
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+
 	&__name.dashed {
-		text-decoration: line-through;
+		opacity: 0.8;
+	}
+
+	&__name.dashed::before {
+		animation: drawLine 0.25s ease-in-out forwards;
 	}
 
 	&__icon {
@@ -113,5 +133,11 @@
 	to {
 		opacity: 1;
 		transform: translateX(0);
+	}
+}
+
+@keyframes drawLine {
+	to {
+		transform: scaleX(1);
 	}
 }

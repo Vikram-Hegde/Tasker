@@ -5,18 +5,17 @@ import Home from './pages/Home';
 import Important from './pages/Important';
 import Completed from './pages/Completed';
 import Toggle from './components/Toggle/Toggle';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TaskInput from './components/TaskInput/TaskInput';
 
 function App() {
 	const [tasks, setTasks] = useState([
-		{ id: 1, task: 'Finish this project', completed: true, important: true },
+		{ id: 1, task: 'Finish this project', completed: false, important: false },
 		{
 			id: 2,
-			task: 'Bank work should be done by today',
+			task: 'Double click to edit',
 			completed: false,
-			important: false,
+			important: true,
 		},
 	]);
 
@@ -76,8 +75,10 @@ function App() {
 					<Toggle setTheme={setTheme} />
 				</header>
 				<div className="page__title">
-					You've got <b>{remainingTasks}</b>{' '}
-					{remainingTasks > 1 ? 'tasks' : 'task'} to complete
+					{remainingTasks
+						? `You've got ${remainingTasks}${' '}
+					${remainingTasks > 1 ? 'tasks' : 'task'} to complete`
+						: `You've completed all the tasks! Hurray`}
 				</div>
 				<TaskInput addNewTask={addNewTask} />
 				{content}
