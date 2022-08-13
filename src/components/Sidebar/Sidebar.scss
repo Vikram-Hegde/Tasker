@@ -41,7 +41,7 @@
 		color: hsl(var(--h) 90% var(--l));
 	}
 
-	@media (width < 1100px) {
+	@media (max-width: 1100px) {
 		--sidebar-span: 1;
 		width: max-content;
 
@@ -54,7 +54,7 @@
 		}
 	}
 
-	@media (width < 750px) {
+	@media (max-width: 750px) {
 		nav {
 			width: 100%;
 		}

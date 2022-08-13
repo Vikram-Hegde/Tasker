@@ -25,7 +25,7 @@ body {
 	grid-template-columns: repeat(12, 1fr);
 	overflow-y: hidden;
 
-	@media (width < 750px) {
+	@media (max-width: 750px) {
 		grid-template-rows: 1fr 3.5rem;
 	}
 }
