@@ -4,12 +4,13 @@ import './TaskInput.scss';
 export default function TaskInput({ addNewTask }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addNewTask({
-			id: Math.floor(Math.random() * 10000),
-			task: e.target.taskInput.value,
-			completed: false,
-			important: false,
-		});
+		e.target.taskInput.value.trim().length &&
+			addNewTask({
+				id: Math.floor(Math.random() * 10000),
+				task: e.target.taskInput.value,
+				completed: false,
+				important: false,
+			});
 		e.target.reset();
 	};
 

@@ -5,8 +5,16 @@
 	grid-column: calc(var(--sidebar-span) + 1) / -1;
 	padding: clamp(1.5rem, 3vw, 2rem);
 	overflow-y: auto;
-}
 
+	@media (width < 1100px) {
+		grid-column: 3 / -2;
+	}
+
+	@media (width < 750px) {
+		grid-column: 1 / -1;
+		grid-row: 1;
+	}
+}
 
 .page {
 	animation: slideIn 250ms ease-in-out forwards;

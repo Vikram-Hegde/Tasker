@@ -6,18 +6,21 @@
 	width: min(720px, 100%);
 	@extend %align-center;
 	background-color: var(--surface-200);
-	height: var(--size);
+	min-height: var(--size);
 	border-radius: var(--brr);
 	position: relative;
 	animation: slideIn 0.2s ease-in-out forwards;
 
 	&__name {
 		position: relative;
+		line-height: 1.25;
+		padding: 0.5rem 0;
+		@extend %align-center;
 	}
 
 	&__name::before {
 		display: block;
-		margin-top: 1px;
+		margin-top: 2px;
 		content: '';
 		height: 1px;
 		background-color: var(--text-200);
@@ -39,7 +42,8 @@
 		background-color: transparent;
 		border: none;
 		min-width: var(--size);
-		height: 100%;
+		height: var(--size);
+		flex-shrink: 0;
 		@extend %centered;
 
 		&:hover {
@@ -85,6 +89,7 @@
 		border-radius: var(--size);
 		border: 2px solid var(--surface-400);
 		background-color: transparent;
+		flex-shrink: 0;
 		@extend %centered;
 
 		svg {

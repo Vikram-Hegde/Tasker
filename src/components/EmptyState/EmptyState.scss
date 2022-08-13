@@ -1,7 +1,7 @@
 @use '../../styles/globals';
 
 .empty-state {
-	height: 60vh;
+	height: 50vh;
 	@extend %centered;
 	flex-direction: column;
 	gap: 1.25rem;

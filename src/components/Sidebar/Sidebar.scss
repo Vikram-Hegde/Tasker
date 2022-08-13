@@ -4,6 +4,12 @@
 	background-color: var(--surface-200);
 	padding: 2rem;
 	user-select: none;
+	grid-column: span var(--sidebar-span);
+	max-width: 18rem;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
 
 	&__list {
 		display: flex;
@@ -33,5 +39,45 @@
 
 	.active {
 		color: hsl(var(--h) 90% var(--l));
+	}
+
+	@media (width < 1100px) {
+		--sidebar-span: 1;
+		width: max-content;
+
+		&__name {
+			display: none;
+		}
+
+		&__item {
+			padding: 12px;
+		}
+	}
+
+	@media (width < 750px) {
+		nav {
+			width: 100%;
+		}
+		height: 3.5rem;
+		inset: auto 0 0 0;
+		width: 100%;
+		z-index: 10;
+		margin: 0;
+		padding: 0;
+		grid-column: 1 / -1;
+		max-width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		&__logo {
+			display: none;
+		}
+
+		&__list {
+			flex-direction: row;
+			justify-content: space-around;
+			margin-top: 0;
+		}
 	}
 }

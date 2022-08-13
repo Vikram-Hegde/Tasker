@@ -36,7 +36,7 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
 							key={item.name}
 						>
 							{item.icon}
-							{item.name}
+							<span className="sidebar__name">{item.name}</span>
 						</li>
 					))}
 				</ul>
