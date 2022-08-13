@@ -7,6 +7,7 @@ import Completed from './pages/Completed';
 import Toggle from './components/Toggle/Toggle';
 import { useState, useEffect } from 'react';
 import TaskInput from './components/TaskInput/TaskInput';
+import { useRef } from 'react';
 
 function App() {
 	const [tasks, setTasks] = useState([
@@ -18,6 +19,31 @@ function App() {
 			important: true,
 		},
 	]);
+
+	const [theme, setTheme] = useState('dark');
+	useEffect(() => {
+		document.body.setAttribute('color-scheme', theme);
+	}, [theme]);
+
+	// bringing in if available
+	useEffect(() => {
+		console.log('i run first');
+		const tasksStorage = JSON.parse(localStorage.getItem('tasks'));
+		if (tasksStorage) {
+			setTasks(tasksStorage);
+		}
+	}, []);
+
+	// saving tasks to localStorage
+	const isInitialMount = useRef(true);
+
+	useEffect(() => {
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+		} else {
+			localStorage.setItem('tasks', JSON.stringify(tasks));
+		}
+	}, [tasks]);
 
 	const completedTasks = tasks.filter((task) => task.completed);
 	const importantTasks = tasks.filter((task) => task.important);
@@ -41,8 +67,6 @@ function App() {
 
 	const addNewTask = (task) => setTasks([...tasks, task]);
 
-	const [theme, setTheme] = useState('dark');
-
 	const [activeMenu, setActiveMenu] = useState({
 		name: 'Home',
 		icon: <HomeIcon width={24} height={24} />,
@@ -61,10 +85,6 @@ function App() {
 		content = <Important {...pageProps} tasks={importantTasks} />;
 	else if (activeMenu.name === 'Completed')
 		content = <Completed {...pageProps} tasks={completedTasks} />;
-
-	useEffect(() => {
-		document.body.setAttribute('color-scheme', theme);
-	}, [theme]);
 
 	return (
 		<main className="App">
