@@ -45,7 +45,7 @@ export default function Task({
 			<div className={`task__name ${task.completed ? 'dashed' : ''}`}>
 				{task.task}
 			</div>
-			{toggle && (
+			{toggle && !task.completed && (
 				<input
 					value={updatedTask}
 					className="edit-task"

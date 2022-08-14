@@ -27,7 +27,6 @@ function App() {
 
 	// bringing in if available
 	useEffect(() => {
-		console.log('i run first');
 		const tasksStorage = JSON.parse(localStorage.getItem('tasks'));
 		if (tasksStorage) {
 			setTasks(tasksStorage);
